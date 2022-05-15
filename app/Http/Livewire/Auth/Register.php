@@ -23,11 +23,13 @@ class Register extends Component
         $attributes = $this->validate();
 
         $user = User::create($attributes);
+        $user->email_verified_at = now();
+        $user->save();
 
         auth()->login($user);
-        
+
         return redirect('/dashboard');
-    } 
+    }
 
     public function render()
     {
