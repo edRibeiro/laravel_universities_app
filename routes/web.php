@@ -15,6 +15,7 @@ use App\Http\Livewire\RTL;
 use App\Http\Livewire\StaticSignIn;
 use App\Http\Livewire\StaticSignUp;
 use App\Http\Livewire\Tables;
+use App\Http\Livewire\Universities\Create;
 use App\Http\Livewire\VirtualReality;
 use GuzzleHttp\Middleware;
 
@@ -46,6 +47,7 @@ Route::get('user-management', UserManagement::class)->middleware('auth')->name('
 
 Route::group(['middleware' => 'auth'], function () {
 Route::get('dashboard', Dashboard::class)->name('dashboard');
+Route::get('universities/create', Create::class)->name('universities.create');
 Route::get('billing', Billing::class)->name('billing');
 Route::get('profile', Profile::class)->name('profile');
 Route::get('tables', Tables::class)->name('tables');

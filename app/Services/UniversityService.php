@@ -33,14 +33,10 @@ class UniversityService
 
     }
 
-    public function getUnivercities($paginated = true, $perpage=10)
+    public function getUnivercities()
     {
         if(University::count() === 0){
             $this->syncUniversities();
         }
-        if($paginated){
-            return University::whereStatusApproved()->paginate($perpage);
-        }
-        return University::all();
     }
 }
