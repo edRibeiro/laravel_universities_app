@@ -1,7 +1,7 @@
 set -eu
 set -o pipefail
 echo "Deploy script started"
-cd /usr/share/nginx/html/material_dashboard_2_laravel_livewire_free/ # go to project repository on the server
+cd /usr/share/nginx/html/laravel-universities-app/ # go to project repository on the server
 git fetch --all
 php8.0 artisan down
 git reset --hard origin/master
@@ -14,7 +14,7 @@ php8.0 artisan config:clear
 php8.0 artisan view:cache
 php8.0 artisan route:cache
 php8.0 artisan storage:link
-chown -R www-data:www-data /usr/share/nginx/html/material_dashboard_2_laravel_livewire_free/ #change here too project repository
+chown -R www-data:www-data /usr/share/nginx/html/laravel-universities-app/ #change here too project repository
 php8.0 artisan up
 source ~/.nvm/nvm.sh
 npm install
