@@ -34,6 +34,7 @@
                                     <h6 class="mb-0">My Subscriptions</h6>
                                 </div>
                                 <div class="card-body p-3">
+
                                     <ul class="list-group">
                                         @forelse ($universities as $university)
                                             <li

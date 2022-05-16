@@ -17,7 +17,7 @@ class Profile extends Component
 
     public function mount()
     {
-        $this->user = auth()->user();
+        $this->user = User::with(['universities', 'suggesteds'])->find(auth()->user()->id);
     }
 
     public function render()

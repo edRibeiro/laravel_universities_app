@@ -13,6 +13,13 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
+     /**
+     * The relationships that should always be loaded.
+     *
+     * @var array
+     */
+    protected $with = ['universities', 'suggesteds'];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -53,7 +60,7 @@ class User extends Authenticatable
 
     public function universities()
     {
-        return $this->belongsToMany(University::class, 'universities_users', 'university_id', 'user_id');
+        return $this->belongsToMany(University::class, 'universities_users', 'user_id', 'university_id' );
     }
 
     public function suggesteds()

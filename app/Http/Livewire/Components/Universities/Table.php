@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Components\Universities;
 
 use App\Models\University;
+use App\Models\User;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -33,9 +34,12 @@ class Table extends Component
 
     public function subiscribe($id)
     {
-        $university = University::find($id);
-        $user = auth()->user();
-        $university->users()->attach($user->id);
-        session()->flash('status', ['message' => 'University subiscribe successfully.']);
+        $university = University::find($id)->load('users');
+        $user = User::find(auth()->user()->id);
+
+        if (!$university->users->contains($user)) {
+            $university->users()->attach($user->id);
+            session()->flash('status', ['message' => 'University subiscribe successfully.']);
+        }
     }
 }
