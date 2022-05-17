@@ -51,7 +51,7 @@
                                                     </p>
                                                 </div>
                                                 <a class="btn btn-link pe-3 ps-0 mb-0 ms-auto w-25 w-md-auto @if ($university->status === 'PENDING') disabled @endif"
-                                                    href="javascript:;">Unsubscribe</a>
+                                                   wire:click="unsubscribe({{$university->id}})" href="javascript:;">Unsubscribe</a>
                                             </li>
                                         @empty
                                             <li
